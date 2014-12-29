@@ -16,13 +16,31 @@ class AddHistoryViewController: UIViewController {
     }
   }
 
+  func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+    self.view.endEditing(true)
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let directions = [
+      UISwipeGestureRecognizerDirection.Up,
+      UISwipeGestureRecognizerDirection.Down,
+      UISwipeGestureRecognizerDirection.Right,
+      UISwipeGestureRecognizerDirection.Left
+      ]
+
+    for direction in directions {
+      var swipe = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+      swipe.direction = direction
+      self.view.addGestureRecognizer(swipe)
+    }
   }
 
   lazy var managedObjectContext : NSManagedObjectContext? = {
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     if let managedObjectContext = appDelegate.managedObjectContext {
+      saveDatabase(getManagedObjectContext())
       return managedObjectContext
     }
     else {
@@ -32,7 +50,7 @@ class AddHistoryViewController: UIViewController {
 
   private func showSuccess() {
     let alert = UIAlertController(title: "PTO Added", message: "Vacation/Sick time added. Go to Balance tab to see update.", preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
     self.presentViewController(alert, animated: true, completion: nil)
 
     datePicker.date = NSDate()
@@ -48,12 +66,14 @@ class AddHistoryViewController: UIViewController {
 }
 
 extension AddHistoryViewController: UITextFieldDelegate {
+
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     if textField == hoursField {
       commentsField.becomeFirstResponder()
     } else if textField == commentsField {
       addButtonPressed(UIButton())
     }
+    textField.resignFirstResponder()
     return false
   }
 }

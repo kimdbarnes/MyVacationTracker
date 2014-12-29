@@ -5,21 +5,14 @@ import CoreData
 class BalanceViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
 
-  var ptoItems = [PTOItem]()
   let BeginningOfTimeAFAUnixIsConcerned = NSDate(timeIntervalSince1970: NSTimeInterval(0))
+
+  var ptoItems = [PTOItem]()
+
+  lazy var managedObjectContext : NSManagedObjectContext? = getManagedObjectContext()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    var today = NSDate()
-    if let moc = self.managedObjectContext {
-      PTOItem.createInManagedObjectContext(
-        moc,
-        date: BeginningOfTimeAFAUnixIsConcerned,
-        hours: 40,
-        comments: "Starting Balance"
-      )
-    }
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -43,16 +36,6 @@ class BalanceViewController: UIViewController {
     }
     return []
   }
-
-  lazy var managedObjectContext : NSManagedObjectContext? = {
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-    if let managedObjectContext = appDelegate.managedObjectContext {
-      return managedObjectContext
-    }
-    else {
-      return nil
-    }
-    }()
 }
 
 extension BalanceViewController: UITableViewDataSource {
@@ -83,8 +66,8 @@ extension BalanceViewController: UITableViewDataSource {
     if(editingStyle == .Delete ) {
       let ptoItemToDelete = ptoItems[indexPath.row]
       managedObjectContext?.deleteObject(ptoItemToDelete)
+      saveDatabase(getManagedObjectContext())
       ptoItems = loadPTOItems()
-//      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
       tableView.reloadData()
     }
   }
