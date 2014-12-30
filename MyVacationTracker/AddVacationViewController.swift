@@ -10,6 +10,7 @@ class AddHistoryViewController: UIViewController {
   @IBAction func addButtonPressed(sender: UIButton) {
     if let moc = self.managedObjectContext {
       PTOItem.createInManagedObjectContext(moc, date: datePicker.date, hours: (0 - (hoursField.text as NSString).doubleValue), comments: commentsField.text)
+      saveDatabase(getManagedObjectContext())
       showSuccess()
     } else {
       showFailure()
@@ -40,7 +41,6 @@ class AddHistoryViewController: UIViewController {
   lazy var managedObjectContext : NSManagedObjectContext? = {
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     if let managedObjectContext = appDelegate.managedObjectContext {
-      saveDatabase(getManagedObjectContext())
       return managedObjectContext
     }
     else {
@@ -54,7 +54,7 @@ class AddHistoryViewController: UIViewController {
     self.presentViewController(alert, animated: true, completion: nil)
 
     datePicker.date = NSDate()
-    hoursField.text = ""
+    hoursField.text = "8"
     commentsField.text = ""
   }
 
