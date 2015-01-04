@@ -17,8 +17,10 @@
 		3B1CC1D21A4F0721006D98DD /* MyVacationTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1CC1D11A4F0721006D98DD /* MyVacationTrackerTests.swift */; };
 		3B67E1F61A4F283200EB6F26 /* AddVacationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E1F51A4F283200EB6F26 /* AddVacationViewController.swift */; };
 		3B728CC41A4F581700E893EE /* PTO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B728CC21A4F581700E893EE /* PTO.xcdatamodeld */; };
-		3B728CC61A4F584A00E893EE /* MyVacationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B728CC51A4F584A00E893EE /* MyVacationTracker.swift */; };
-		3B78D0461A50A8AA008D9BD9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B78D0451A50A8AA008D9BD9 /* Helpers.swift */; };
+		3B78D0461A50A8AA008D9BD9 /* DatabaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B78D0451A50A8AA008D9BD9 /* DatabaseHelpers.swift */; };
+		3B80C3741A530C3A0011B032 /* PTOAccruer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B80C3731A530C3A0011B032 /* PTOAccruer.swift */; };
+		3B80C37D1A530F2F0011B032 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B80C37C1A530F2F0011B032 /* NSDate.swift */; };
+		3BC5E5C81A5A01D600CCAFFB /* AccrualItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5E5C71A5A01D600CCAFFB /* AccrualItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +48,10 @@
 		3B1CC1D11A4F0721006D98DD /* MyVacationTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVacationTrackerTests.swift; sourceTree = "<group>"; };
 		3B67E1F51A4F283200EB6F26 /* AddVacationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVacationViewController.swift; sourceTree = "<group>"; };
 		3B728CC31A4F581700E893EE /* PTO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PTO.xcdatamodel; sourceTree = "<group>"; };
-		3B728CC51A4F584A00E893EE /* MyVacationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVacationTracker.swift; sourceTree = "<group>"; };
-		3B78D0451A50A8AA008D9BD9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		3B78D0451A50A8AA008D9BD9 /* DatabaseHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelpers.swift; sourceTree = "<group>"; };
+		3B80C3731A530C3A0011B032 /* PTOAccruer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTOAccruer.swift; sourceTree = "<group>"; };
+		3B80C37C1A530F2F0011B032 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		3BC5E5C71A5A01D600CCAFFB /* AccrualItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccrualItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,18 +93,16 @@
 		3B1CC1B61A4F0721006D98DD /* MyVacationTracker */ = {
 			isa = PBXGroup;
 			children = (
-				3B017D9C1A4F59570052B3EB /* PTOItem.swift */,
-				3B1CC1B91A4F0721006D98DD /* AppDelegate.swift */,
-				3B67E1F51A4F283200EB6F26 /* AddVacationViewController.swift */,
-				3B1CC1BB1A4F0721006D98DD /* BalanceViewController.swift */,
-				3B1CC1BD1A4F0721006D98DD /* AdministrationViewController.swift */,
-				3B1CC1BF1A4F0721006D98DD /* Main.storyboard */,
-				3B1CC1C21A4F0721006D98DD /* Images.xcassets */,
-				3B1CC1C41A4F0721006D98DD /* LaunchScreen.xib */,
-				3B1CC1B71A4F0721006D98DD /* Supporting Files */,
+				3B80C37B1A530E040011B032 /* Services */,
+				3B80C37A1A530DF40011B032 /* Helpers */,
+				3B80C3781A530D9C0011B032 /* Models */,
+				3B80C3771A530D950011B032 /* Controllers */,
 				3B728CC21A4F581700E893EE /* PTO.xcdatamodeld */,
-				3B728CC51A4F584A00E893EE /* MyVacationTracker.swift */,
-				3B78D0451A50A8AA008D9BD9 /* Helpers.swift */,
+				3B1CC1B91A4F0721006D98DD /* AppDelegate.swift */,
+				3B1CC1BF1A4F0721006D98DD /* Main.storyboard */,
+				3B1CC1C41A4F0721006D98DD /* LaunchScreen.xib */,
+				3B1CC1C21A4F0721006D98DD /* Images.xcassets */,
+				3B1CC1B71A4F0721006D98DD /* Supporting Files */,
 			);
 			path = MyVacationTracker;
 			sourceTree = "<group>";
@@ -128,6 +130,42 @@
 				3B1CC1D01A4F0721006D98DD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B80C3771A530D950011B032 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B67E1F51A4F283200EB6F26 /* AddVacationViewController.swift */,
+				3B1CC1BB1A4F0721006D98DD /* BalanceViewController.swift */,
+				3B1CC1BD1A4F0721006D98DD /* AdministrationViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3B80C3781A530D9C0011B032 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3BC5E5C71A5A01D600CCAFFB /* AccrualItem.swift */,
+				3B017D9C1A4F59570052B3EB /* PTOItem.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3B80C37A1A530DF40011B032 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3B78D0451A50A8AA008D9BD9 /* DatabaseHelpers.swift */,
+				3B80C37C1A530F2F0011B032 /* NSDate.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		3B80C37B1A530E040011B032 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3B80C3731A530C3A0011B032 /* PTOAccruer.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,11 +270,13 @@
 			files = (
 				3B728CC41A4F581700E893EE /* PTO.xcdatamodeld in Sources */,
 				3B017D9D1A4F59570052B3EB /* PTOItem.swift in Sources */,
-				3B728CC61A4F584A00E893EE /* MyVacationTracker.swift in Sources */,
-				3B78D0461A50A8AA008D9BD9 /* Helpers.swift in Sources */,
+				3B78D0461A50A8AA008D9BD9 /* DatabaseHelpers.swift in Sources */,
 				3B1CC1BE1A4F0721006D98DD /* AdministrationViewController.swift in Sources */,
+				3B80C37D1A530F2F0011B032 /* NSDate.swift in Sources */,
 				3B1CC1BA1A4F0721006D98DD /* AppDelegate.swift in Sources */,
+				3B80C3741A530C3A0011B032 /* PTOAccruer.swift in Sources */,
 				3B1CC1BC1A4F0721006D98DD /* BalanceViewController.swift in Sources */,
+				3BC5E5C81A5A01D600CCAFFB /* AccrualItem.swift in Sources */,
 				3B67E1F61A4F283200EB6F26 /* AddVacationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
